@@ -1,11 +1,411 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TechVision | Inovação em Cada Detalhe</title>
+    <style>
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.5;
+        }
+        
+        /* Barra de navegação */
+        nav {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 44px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
+            color: #f5f5f7;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to bottom, #000000, #1a1a1a);
+            color: white;
+            text-align: center;
+            padding: 120px 20px 80px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        
+        .hero h2 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .hero-links {
+            margin-top: 30px;
+        }
+        
+        .hero-links a {
+            color: #2997ff;
+            text-decoration: none;
+            font-size: 21px;
+            margin: 0 20px;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .hero-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .hero-links a::after {
+            content: "›";
+            margin-left: 5px;
+            font-size: 24px;
+        }
+        
+        /* Produtos */
+        .products {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 60px;
+            letter-spacing: -0.5px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #f5f5f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-name {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .product-description {
+            color: #86868b;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+        
+        .product-price {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .product-link {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 17px;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .product-link::after {
+            content: "›";
+            margin-left: 5px;
+            font-size: 20px;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: #f5f5f7;
+            padding: 40px 20px;
+            border-top: 1px solid #d2d2d7;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 12px;
+            font-weight: 600;
+            color: #86868b;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #515154;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            max-width: 1200px;
+            margin: 30px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #d2d2d7;
+            color: #86868b;
+            font-size: 12px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero h2 {
+                font-size: 22px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    OLÁ MUNDO
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09999 21.97C7.78999 22 6.90999 20.66 6.07999 19.43C4.24999 16.67 2.93999 11.65 6.70999 8.66C8.06999 7.47 9.81999 6.81 11.45 6.81C12.99 6.81 14.35 7.4 15.45 8.49C16.56 9.59 17.09 10.69 18.05 10.52C18.67 10.41 19.77 9.8 20.77 9.8C21.77 9.8 22.7 10.29 23.28 10.87C20.49 13.62 21.15 18.11 18.71 19.5ZM13 4.5C13.96 3.38 15.28 2.73 16.45 2.73C16.62 4.25 15.96 5.66 15.04 6.63C14.11 7.59 12.81 8.25 11.66 8.11C11.5 6.63 12.23 5.32 13 4.5Z" fill="white"/>
+                </svg>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Loja</a></li>
+                <li><a href="#">Mac</a></li>
+                <li><a href="#">iPad</a></li>
+                <li><a href="#">iPhone</a></li>
+                <li><a href="#">Watch</a></li>
+                <li><a href="#">AirPods</a></li>
+                <li><a href="#">TV e Casa</a></li>
+                <li><a href="#">Entretenimento</a></li>
+                <li><a href="#">Acessórios</a></li>
+                <li><a href="#">Suporte</a></li>
+            </ul>
+            <div class="search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>TechVision Pro</h1>
+        <h2>O futuro. Feito para você.</h2>
+        <div class="hero-links">
+            <a href="#">Saiba mais</a>
+            <a href="#">Comprar</a>
+        </div>
+    </section>
+
+    <section class="products">
+        <h2 class="section-title">Nossos Produtos</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/300x200?text=MacBook+Pro" alt="MacBook Pro">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">MacBook Pro</h3>
+                    <p class="product-description">Potência além da imaginação com o chip M2 Pro.</p>
+                    <p class="product-price">A partir de R$ 14.999</p>
+                    <a href="#" class="product-link">Comprar</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/300x200?text=iPhone+14" alt="iPhone 14">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">iPhone 14 Pro</h3>
+                    <p class="product-description">Um salto radical em fotografia e desempenho.</p>
+                    <p class="product-price">A partir de R$ 7.999</p>
+                    <a href="#" class="product-link">Comprar</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/300x200?text=Apple+Watch" alt="Apple Watch">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Apple Watch Ultra</h3>
+                    <p class="product-description">Aventura nunca foi tão inteligente.</p>
+                    <p class="product-price">A partir de R$ 5.999</p>
+                    <a href="#" class="product-link">Comprar</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/300x200?text=AirPods+Pro" alt="AirPods Pro">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">AirPods Pro (2ª geração)</h3>
+                    <p class="product-description">Som de alta fidelidade com Cancelamento Ativo de Ruído.</p>
+                    <p class="product-price">R$ 2.499</p>
+                    <a href="#" class="product-link">Comprar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Descobrir e Comprar</h3>
+                <ul>
+                    <li><a href="#">Loja</a></li>
+                    <li><a href="#">Mac</a></li>
+                    <li><a href="#">iPad</a></li>
+                    <li><a href="#">iPhone</a></li>
+                    <li><a href="#">Watch</a></li>
+                    <li><a href="#">AirPods</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="#">TechVision Music</a></li>
+                    <li><a href="#">TechVision TV+</a></li>
+                    <li><a href="#">TechVision Arcade</a></li>
+                    <li><a href="#">iCloud</a></li>
+                    <li><a href="#">TechVision One</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Sua Conta</h3>
+                <ul>
+                    <li><a href="#">Gerenciar seu ID TechVision</a></li>
+                    <li><a href="#">Conta da TechVision Store</a></li>
+                    <li><a href="#">iCloud.com</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Sobre a TechVision</h3>
+                <ul>
+                    <li><a href="#">Newsroom</a></li>
+                    <li><a href="#">Liderança da TechVision</a></li>
+                    <li><a href="#">Oportunidades de Carreira</a></li>
+                    <li><a href="#">Investidores</a></li>
+                    <li><a href="#">Ética e Compliance</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>Copyright © 2023 TechVision Inc. Todos os direitos reservados.</p>
+            <p>Brasil</p>
+        </div>
+    </footer>
 </body>
 </html>

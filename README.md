@@ -3,7 +3,7 @@ AP2 - RENDER
 
 Atividade de Pesquisa e Implantação de Projeto em Nuvem
 
-Feito por Andre luiz Enrico Dias Joshua Yuuki
+Feito por Andre Luiz - Enrico Dias - Joshua Yuuki
 
 
 link para site no render
